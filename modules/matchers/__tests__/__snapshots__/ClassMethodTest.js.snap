@@ -1,0 +1,18 @@
+exports[`ClassMethod should allow filtering based on method name 1`] = `
+<div>
+  greet
+</div>
+`;
+
+exports[`ClassMethod should ignore computed method names 1`] = `
+<div>
+  goodbye
+</div>
+`;
+
+exports[`ClassMethod should match a class method 1`] = `
+<div>
+  ClassMethod
+  ClassMethod
+</div>
+`;

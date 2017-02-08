@@ -1,0 +1,11 @@
+exports[`Variable should filter a variable by name 1`] = `
+<div>
+  age
+</div>
+`;
+
+exports[`Variable should match a variable 1`] = `
+<div>
+  VariableDeclarator
+</div>
+`;

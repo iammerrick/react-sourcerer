@@ -1,0 +1,7 @@
+exports[`Matcher Composition should match a variable 1`] = `
+<div>
+  <div>
+    VariableDeclarator
+  </div>
+</div>
+`;

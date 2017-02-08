@@ -1,0 +1,21 @@
+exports[`Match should allow match nesting 1`] = `
+<div>
+  <div>
+    <div>
+      VariableDeclarator
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Match should match a class method 1`] = `
+<div>
+  ClassMethod
+</div>
+`;
+
+exports[`Match should match a variable 1`] = `
+<div>
+  VariableDeclarator
+</div>
+`;
