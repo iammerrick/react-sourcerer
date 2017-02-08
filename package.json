@@ -1,21 +1,21 @@
 {
-  "name": "code-assistant",
+  "name": "react-source",
   "version": "0.0.1",
-  "description": "An intelligent code assistant that is semantically aware and learns from you.",
+  "description": "A collection of components for working with JavaScript source code in React.",
   "main": "./index.js",
   "scripts": {
     "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/iammerrick/code-assistant.git"
+    "url": "git+ssh://git@github.com/iammerrick/react-source.git"
   },
   "author": "Merrick Christensen",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/iammerrick/code-assistant/issues"
+    "url": "https://github.com/iammerrick/react-source/issues"
   },
-  "homepage": "https://github.com/iammerrick/code-assistant#readme",
+  "homepage": "https://github.com/iammerrick/react-source#readme",
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-preset-es2015": "^6.18.0",
