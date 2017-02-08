@@ -4,7 +4,12 @@ import {parse} from 'babylon';
 class ASTProvider extends React.Component {
   getChildContext() {
     return {
-      ast: parse(this.props.source),
+      ast: parse(this.props.source, {
+        sourceType: 'module',
+        plugins: [
+          'jsx',
+        ],
+      }),
     };
   }
 
