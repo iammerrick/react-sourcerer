@@ -6,6 +6,7 @@ import ASTProvider from '../../modules/ASTProvider';
 import ClassMethod from '../../modules/matchers/ClassMethod';
 import Program from '../../modules/matchers/Program';
 import Variable from '../../modules/matchers/Variable';
+import Function from '../../modules/matchers/Function';
 
 const getStdin = () => {
   const stdin = process.stdin;
@@ -69,6 +70,9 @@ getStdin()
               </stats>
             )}
           </Program>
+          <Function>
+            {(functions) => <stat>Functions: {functions.length}</stat>}
+          </Function>
           <ClassMethod>
             {(methods) => <stat>Class Methods: {methods.length}</stat>}
           </ClassMethod>
@@ -79,5 +83,7 @@ getStdin()
       </ASTProvider>
     );
 
-    process.stdout.write(log(results.toJSON()));
+    process.stdout.write(
+      `${log(results.toJSON())}\n`
+    );
   });
