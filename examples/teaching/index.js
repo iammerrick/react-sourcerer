@@ -72,6 +72,7 @@ getStdin()
                     return (
                       <suggestions>
                         {matches.filter((match) => {
+                          if(!match.node.callee.object) return false;
                           return match.node.callee.object.name === importMatch.node.specifiers[0].local.name && match.node.callee.property.name === 'forEach';
                         }).map((match, key) => {
                           const name = match.node.arguments[0].name;

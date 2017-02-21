@@ -7,5 +7,5 @@ const fruits = [
 ];
 
 _.forEach(fruits, (fruit) => {
-  console.log(fruit);
+  alert(fruit);
 });

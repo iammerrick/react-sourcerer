@@ -1,0 +1,15 @@
+exports[`Import Should sub match for identifier 1`] = `
+<div>
+  <div>
+    <div>
+      _
+    </div>
+    <div>
+      forEach
+    </div>
+    <div>
+      forEach
+    </div>
+  </div>
+</div>
+`;

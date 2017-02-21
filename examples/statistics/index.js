@@ -3,9 +3,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import ASTProvider from '../../modules/ASTProvider';
-import ClassMethod from '../../modules/matchers/ClassMethod';
 import Program from '../../modules/matchers/Program';
 import Variable from '../../modules/matchers/Variable';
+import CallExpression from '../../modules/matchers/CallExpression';
+import ArrowFunctionExpression from '../../modules/matchers/ArrowFunctionExpression';
+import Import from '../../modules/matchers/Import';
+import ClassMethod from '../../modules/matchers/ClassMethod';
 import Function from '../../modules/matchers/Function';
 
 const getStdin = () => {
@@ -62,6 +65,9 @@ getStdin()
     const results = renderer.create(
       <ASTProvider source={source}>
         <stats>
+          <Import>
+            {(deps) => <stat>Dependencies: {deps.length}</stat>}
+          </Import>
           <Program>
             {([program]) => (
               <stats>
@@ -71,10 +77,16 @@ getStdin()
             )}
           </Program>
           <Function>
-            {(functions) => <stat>Functions: {functions.length}</stat>}
+            {(functions) => functions.length ? <stat>Functions: {functions.length}</stat> : <ignore />}
           </Function>
+          <ArrowFunctionExpression>
+            {(arrows) => arrows.length ? <stat>Arrow Functions: {arrows.length}</stat> : <ignore />}
+          </ArrowFunctionExpression>
+          <CallExpression>
+            {(calls) => calls.length ? <stat>Function Calls: {calls.length}</stat> : <ignore />}
+          </CallExpression>
           <ClassMethod>
-            {(methods) => <stat>Class Methods: {methods.length}</stat>}
+            {(methods) => methods.lenghth ? <stat>Class Methods: {methods.length}</stat> : <ignore />}
           </ClassMethod>
           <Variable>
             {(variables) => <stat>Variables: {variables.length}</stat>}
