@@ -1,26 +1,11 @@
 {
   "name": "react-sourcerer",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "A collection of components for working with JavaScript source code in React.",
   "main": "./dist/index.js",
-  "module": "modules/index.js",
-  "files": [
-    "modules/index.js",
-    "modules/Match.js",
-    "modules/ASTProvider.js",
-    "modules/matchers/ArrowFunctionExpression.js",
-    "modules/matchers/CallExpression.js",
-    "modules/matchers/ClassMethod.js",
-    "modules/matchers/Function.js",
-    "modules/matchers/Identifier.js",
-    "modules/matchers/Import.js",
-    "modules/matchers/Program.js",
-    "modules/matchers/Variable.js",
-    "dist/index.js"
-  ],
   "scripts": {
     "test": "jest",
-    "build": "webpack"
+    "build": "babel --ignore __tests__ modules -d dist"
   },
   "repository": {
     "type": "git",
