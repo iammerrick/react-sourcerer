@@ -1,5 +1,6 @@
 import React from 'react';
-import {parse} from 'babylon';
+
+const { parse  } = require('babylon');
 
 class ASTProvider extends React.Component {
   getChildContext() {
