@@ -1,7 +1,7 @@
 import ASTProvider from '../../ASTProvider';
 import React from 'react';
 import Identifier from '../Identifier';
-import Import from '../Import';
+import Import, { getIdentifiersFromImport } from '../Import';
 
 import renderer from 'react-test-renderer';
 
@@ -25,6 +25,20 @@ describe('Import', () => {
             </Identifier>
           ))}
         </div>
+      )}
+    </Import>
+  </ASTProvider>);
+
+    expect(output.toJSON()).toMatchSnapshot(); 
+  });
+
+  it('should extract all locals from import', () => {
+    const output = renderer.create(<ASTProvider source={`
+    import _, { forEach } from 'lodash';
+    `}>
+    <Import from={'lodash'}>
+      {(imports) => (
+        <div>{getIdentifiersFromImport(imports)}</div>
       )}
     </Import>
   </ASTProvider>);

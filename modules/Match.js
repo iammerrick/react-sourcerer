@@ -1,5 +1,6 @@
 import React from 'react';
 import traverse from 'babel-traverse';
+import shallowEqual from './utils/shallowEqual';
 
 const isMatching = ({match, ast}, context) => {
   const matches = [];
@@ -29,6 +30,13 @@ class Match extends React.Component {
 
   state = {
     matches: isMatching(this.props, this.context),
+  }
+
+  componentWillReceiveProps(next) {
+    if (shallowEqual(next, this.props)) return null;
+    this.setState({
+      matches: isMatching(next, this.context),
+    });
   }
 
   componentDidUpdate(_, prev) {

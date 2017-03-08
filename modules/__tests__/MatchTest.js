@@ -1,8 +1,8 @@
 import ASTProvider from '../ASTProvider';
 import React from 'react';
 import Match  from '../Match';
-import Import from '../matchers/Import';
-import Variable from '../matchers/Variable';
+import Import, {getIdentifiersFromImport} from '../matchers/Import';
+import MemberExpression from '../matchers/MemberExpression';
 import * as t from 'babel-types';
 
 import renderer from 'react-test-renderer';
@@ -61,24 +61,25 @@ describe('Match', () => {
   });
 
   it('should support callbacks for lateral composition', () => {
-    class JQueryAndName extends React.Component {
+    class LodashAndForEach extends React.Component {
       state = {
-        jquery: false,
-        name: false,
+        lodash: [],
+        forEach: false,
       };
 
       handleImportMatch = (matches) => {
         if (matches.length >= 1) {
+          const identifiers = getIdentifiersFromImport(matches);
           this.setState({
-            jquery: true,
+            lodash: identifiers,
           });
         }
       };
 
-      handleVariableMatch = (matches) => {
+      handleMemberExpression = (matches) => {
         if (matches.length >= 1) {
           this.setState({
-            name: true,
+            forEach: true,
           });
         }
       };
@@ -86,9 +87,13 @@ describe('Match', () => {
       render() {
         return (
           <div>
-            <Import from='jquery' onMatch={this.handleImportMatch} />
-            <Variable name='name' onMatch={this.handleVariableMatch} />
-            { this.state.jquery && this.state.name 
+            <Import from='lodash' onMatch={this.handleImportMatch} />
+            <MemberExpression 
+              name='forEach' 
+              target={this.state.lodash} 
+              onMatch={this.handleMemberExpression} 
+            />
+            { this.state.lodash.length > 0 && this.state.forEach
               ? 'Yes'
               : 'Nope' }
           </div>
@@ -97,10 +102,18 @@ describe('Match', () => {
     }
 
     const output = renderer.create(<ASTProvider source={`
-      import $ from 'jquery';
-      const name = $('Merrick');
+      import _ from 'lodash';
+      const fruits = [
+        'Apples',
+        'Oranges',
+        'Grapes',
+      ];
+
+      _.forEach(fruits, (fruit) => {
+        alert(fruit);
+      });
     `}>
-      <JQueryAndName />
+      <LodashAndForEach/>
     </ASTProvider>);
 
     expect(output.toJSON()).toMatchSnapshot(); 

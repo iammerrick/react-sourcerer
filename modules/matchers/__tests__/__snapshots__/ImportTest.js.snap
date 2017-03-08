@@ -13,3 +13,10 @@ exports[`Import Should sub match for identifier 1`] = `
   </div>
 </div>
 `;
+
+exports[`Import should extract all locals from import 1`] = `
+<div>
+  _
+  forEach
+</div>
+`;
