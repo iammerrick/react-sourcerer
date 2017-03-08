@@ -19,3 +19,9 @@ exports[`Match should match a variable 1`] = `
   VariableDeclarator
 </div>
 `;
+
+exports[`Match should support callbacks for lateral composition 1`] = `
+<div>
+  Yes
+</div>
+`;
