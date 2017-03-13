@@ -2,7 +2,7 @@
 
 This project allows you to express code patterns in the form of React components. 
 
-This is a very experimental project. Currently, this project is under heavy development but a lot can be understood from the tests.
+This is a very experimental project. Currently, this project is under heavy development but a lot can be understood from the [tests](modules).
 
 # Example
 
@@ -30,4 +30,4 @@ For example the following will match code that:
 </Import>
 ```
 
-Ofcourse the patterns can be as sophisticated as you'd like them to be, and because React is awesome you can even observe changes in the code (componentDidUpdate). 
+Of course the patterns can be as sophisticated as you'd like them to be, and because React is awesome you can even observe changes in the code (componentDidUpdate). 
