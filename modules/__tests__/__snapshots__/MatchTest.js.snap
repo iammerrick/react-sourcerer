@@ -25,3 +25,9 @@ exports[`Match should support callbacks for lateral composition 1`] = `
   Yes
 </div>
 `;
+
+exports[`Match should support lateral by not scoping 1`] = `
+<div>
+  Yes
+</div>
+`;

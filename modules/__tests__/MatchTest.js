@@ -60,6 +60,55 @@ describe('Match', () => {
     expect(output.toJSON()).toMatchSnapshot(); 
   });
 
+  it('should support lateral by not scoping', () => {
+
+    class LodashAndForEach extends React.Component {
+      render() {
+        return (
+          <Import from='lodash'>
+            {
+              (imports) => (
+                <MemberExpression 
+                  name='forEach' 
+                  target={getIdentifiersFromImport(imports)} 
+                >
+                  {
+                    (matches) => (
+                      <div>
+                        {
+                      matches.length > 0 
+                        ? 'Yes'
+                        : 'Nope'
+                        }
+                      </div>
+                    )
+                  }
+                </MemberExpression>
+              )
+            }
+          </Import>
+        );
+      }
+    }
+
+    const output = renderer.create(<ASTProvider source={`
+      import _ from 'lodash';
+      const fruits = [
+        'Apples',
+        'Oranges',
+        'Grapes',
+      ];
+
+      _.forEach(fruits, (fruit) => {
+        alert(fruit);
+      });
+    `}>
+      <LodashAndForEach/>
+    </ASTProvider>);
+
+    expect(output.toJSON()).toMatchSnapshot(); 
+  });
+
   it('should support callbacks for lateral composition', () => {
     class LodashAndForEach extends React.Component {
       state = {

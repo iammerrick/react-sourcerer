@@ -1,6 +1,6 @@
 {
   "name": "react-sourcerer",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A collection of components for working with JavaScript source code in React.",
   "main": "./dist/index.js",
   "scripts": {
