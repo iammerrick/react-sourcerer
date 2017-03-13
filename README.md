@@ -25,7 +25,6 @@ For example the following will match code that:
         ? <UseES2015Each />
         : null}
   </MemberExpression>
-
 }
 </Import>
 ```
